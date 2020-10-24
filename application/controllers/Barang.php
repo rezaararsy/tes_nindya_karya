@@ -18,8 +18,16 @@ class Barang extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Model');
+    }
 	public function index()
-	{
-		$this->load->view('welcome_message');
+	{   
+        
+        $data['barang'] = $this->Model->getBarangAll();
+		$this->load->view('halaman_utama',$data);
 	}
 }
